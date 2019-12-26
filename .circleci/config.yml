@@ -1,5 +1,11 @@
 version: 2
 jobs:
+  build:
+    docker: 
+       - image: circleci/node:10.16.0# the primary container, where your job's commands are run
+    steps:
+      - checkout # check out the code in the project directory
+      - run: echo "hello world" # run 
   node:
     working_directory: ~/reactteast
     docker:
