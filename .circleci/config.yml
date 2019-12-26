@@ -1,8 +1,54 @@
-version: 2
+version: 1
 jobs:
-  build:
+  node:
     docker: 
        - image: circleci/node:10.16.0 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run 
+
+
+  # android:
+  # working_directory: ~/reactteast/android
+  # docker:
+  #   - image: circleci/android:api-27-node8-alpha
+  # steps:
+  #   - checkout:
+  #       path: ~/reactteast
+
+  #   - attach_workspace:
+  #       at: ~/reactteast
+
+  #   - restore_cache:
+  #       key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+
+  #   - run: bundle install
+
+  #   - save_cache:
+  #       key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+  #       paths:
+  #         - vendor/bundle
+
+  #   - run:
+  #       name: fastlane tests
+  #       command: |
+  #         mkdir -p test-results/fastlane
+  #         bundle exec fastlane test
+  #         mv fastlane/report.xml test-results/fastlane
+  #   - store_test_results:
+  #       path: test-results
+
+  #   - store_artifacts:
+  #       path: test-results
+
+workflows:
+  version: 1
+  node-android:
+    jobs:
+      - node
+      # - android:
+      #     requires:
+      #       - node
+      # - ios:
+      #     requires:
+      #       - node
