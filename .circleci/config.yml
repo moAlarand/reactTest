@@ -1,4 +1,4 @@
-version: 1
+version: 2
 jobs:
   node:
     docker: 
@@ -42,7 +42,7 @@ jobs:
   #       path: test-results
 
 workflows:
-  version: 1
+  version: 2
   node-android:
     jobs:
       - node
